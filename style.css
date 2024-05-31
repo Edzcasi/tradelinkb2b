@@ -7,9 +7,6 @@ body {
   background: #0B0222;
   color: white;
 }
-
-@media only screen and (max-width: 767px;) {
-
 header {
   width: 100%;
   display: flex;
@@ -62,4 +59,3 @@ li {
   list-style:none;
 }
 
-}
