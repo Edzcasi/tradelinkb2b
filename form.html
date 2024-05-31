@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head> 
+
+<body>
+  
+      <input type="text" id="name" class="js-name-input" placeholder="Enter your name"><br><br>
+      
+      <label for="email">Email address</label><br>
+      <input type="email" id="email"  class="js-input-email" placeholder="Enter your email"><br><br>
+      
+      <label for="password">Password</label><br>
+      <input type="password" id="password" class="js-input-password" placeholder="Enter your password"><br><br>
+      
+      <button id="btn">Submit</button>
+      <button class="btnDelete">Delete</button>
+ 
+</body> 
+
+<script>
+const loginDetails = {
+  name: [],
+  email: [],
+  password: [] 
+}
+
+console.log(loginDetails);
+
+renderLoginDetails();
+ 
+ function renderLoginDetails() {
+
+for(let i = 0; i < loginDetails.length; i++) {
+  const login = loginDetails[i];
+  loginDetails += login;
+}
+
+console.log(localStorage.getItem('loginDetails'))
+}
+
+
+const buttonElement = document.getElementById('btn');
+buttonElement.addEventListener('click', function() {
+    
+    const inputElementName = document.querySelector('.js-name-input')
+    const nameValue = inputElementName.value;
+    
+    loginDetails.name.unshift(nameValue);
+    
+    inputElementName.value = '';
+   
+    
+    const inputElementEmail = document.querySelector('.js-input-email');
+    const emailValue = inputElementEmail.value;
+    loginDetails.email.unshift(emailValue);
+    
+    inputElementEmail.value = '';
+    
+
+    const inputElementPassword = document.querySelector('.js-input-password');
+      passwordValue = inputElementPassword.value;
+      
+      loginDetails.password.unshift(passwordValue);
+    
+      inputElementPassword.value = '';
+    
+    localStorage.setItem('loginDetails', JSON.stringify(loginDetails));
+    
+    renderLoginDetails();
+})
+
+
+const removeDetails = document.querySelector('.btnDelete');
+
+removeDetails.addEventListener('click', function() {
+  
+  const loginDetailsToJSON = JSON.stringify('loginDetails');
+  
+  localStorage.removeItem('loginDetails');
+  
+  console.log(loginDetails);
+})
+
+
+</script>
+
+</html>
